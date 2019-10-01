@@ -23,7 +23,12 @@ void main()
 	int n, *A;
 	printf("Enter N\n");
 	scanf("%d", &n);
-	A = malloc((n + 1) * sizeof(int));
+	A = (int *)malloc((n + 1) * sizeof(int));
+	if (A == NULL)
+	{
+		printf("Memory ERROR");
+		return -1;
+	}
 	for (int i = 2; i <= n; i++)
 	{
 		A[i] = 0;
