@@ -9,7 +9,12 @@ void main()
 	int *A;
 	printf("Enter size of array\n");
 	scanf("%d",&n);
-	A = malloc(n * sizeof(int));
+	A = (int *)malloc(n * sizeof(int));
+	if (A == NULL)
+	{
+		printf("Memory ERROR");
+		return -1
+	}
 	printf("Enter array's elements\n");
 	for (int i = 0; i < n; i++)
 	{
@@ -20,4 +25,5 @@ void main()
 		}
 	}
 	printf("In array there are %d zero elements", s);
+	free(A);
 } 
