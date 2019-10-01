@@ -46,7 +46,12 @@ void main()
 	char *A;
 	printf("Enter number of brackets\n");
 	scanf("%d",&n);
-	A = malloc(n * sizeof(char));
+	A = (char *)malloc(n * sizeof(char));
+	if (A == NULL)
+	{
+		printf("Memory ERROR");
+		return -1;
+	}
 	printf("Enter bracket sequence\n");
 	scanf("%s",A);
 	for (int i = 1; i <= n / 2; i++)
@@ -64,5 +69,6 @@ void main()
 		printf("Sequence is correct");
 	}
 	else printf("Sequence is incorrect");
+	free(A);
 }
 
