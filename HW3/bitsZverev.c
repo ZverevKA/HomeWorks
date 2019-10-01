@@ -73,7 +73,7 @@ int getByte(int x, int n)
 }
 
 
-int isPower(int x)
+int isPower2(int x)
 {
 	int y;
 	y = !(((~x + 1) & x) ^ x); // is x like 000...0001000..00
@@ -88,9 +88,10 @@ int isPower(int x)
 int logicalShift(int x, int n)
 {
 	int a, b, c, d, n1;
-	a = ((x >> 31) & 1); // a = 1 if x >= 0, else a = 0
+	a = ((x >> 31) & 1); // a = 0 if x >= 0, else a = 1
 	n1 = ~n + 1; // n1 = -n
-	b = a << (32 + n1); 
+	b = a << (31 + n1);
+	b = b + b; 
 	c = (x >> n) + b; // if bit#(32-n..32) were equal 1, after + b they will be 0
 	return c;
 }
