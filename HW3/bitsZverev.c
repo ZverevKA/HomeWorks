@@ -75,7 +75,7 @@ int getByte(int x, int n)
 
 int isPower2(int x)
 {
-	int y;
+	int y, z, t;
 	y = !(((~x + 1) & x) ^ x); // is x like 000...0001000..00
 	z = !(!(0 ^ x)); // is x != 0 ?
 	t = !((x >> 31) & 1); // is x >= 0 ?
