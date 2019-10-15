@@ -1,8 +1,14 @@
 #include <stdio.h>
 
+<<<<<<< HEAD
 size_t newStrlen(char str[])
 {
 	size_t k = 0;
+=======
+int newStrlen(char str[])
+{
+	int k = 0;
+>>>>>>> bc544554ec0ebd464dfccf6e2ed903416fefcf8b
 	while (str[k]!='\0')
 	{
 		k++;
@@ -48,6 +54,10 @@ int newStrcmp(char str1[], char str2[])
 return k;
 }
 
+<<<<<<< HEAD
 void main()
 {
 }
+=======
+
+>>>>>>> bc544554ec0ebd464dfccf6e2ed903416fefcf8b
