@@ -35,9 +35,10 @@ int newStrcmp(char str1[], char str2[])
 {
 	int k;
 	size_t t = newStrlen(str1);
-	if (newStrlen(str1) < newStrlen(str2))
+	size_t l = newStrlen(str2);
+	if (t < l)
 	{
-		t = newStrlen(str2);
+		t = l;
 	}
 	for (size_t i = 0; i <= t; i++)
 	{
@@ -47,7 +48,7 @@ int newStrcmp(char str1[], char str2[])
 			break;
 		} 
 	}
-return k;
+	return k;
 }
 
 void main()
