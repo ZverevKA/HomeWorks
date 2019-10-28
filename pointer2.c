@@ -8,7 +8,7 @@ float f1 = 1., f2 = 2.;
 
 
 
-int summa (int x, int y)
+int summa(int x, int y)
 {
 	return (x+y);
 }
@@ -27,7 +27,7 @@ int multiplication(int x, int y)
 
 int divison(int x, int y)
 {
-	return(x / y);
+	return (x / y);
 }
 
 
@@ -57,7 +57,7 @@ int main()
 	}	
 
 	arr3 = malloc((n + 2) * sizeof(int));
-	if (arr1 == NULL)
+	if (arr3 == NULL)
 	{
 		printf("Memory error");
 		return -1;
