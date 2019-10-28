@@ -5,19 +5,19 @@
 
 int toASCII(int x)
 {
-	if (x >= 65 && x <= 95)
+	if (x >= 'A' && x <='Z')
 	{
-		return (x - 65);
+		return (x - 'A');
 	}
-	if (x >= 97 && x <= 122)
+	if (x >= 'a' && x <= 'z')
 	{
 		return (x - 71);
 	}
-	if (x == 43)
+	if (x == '+')
 	{
 		return 62;
 	}
-	if (x >= 48 && x <= 57)
+	if (x >= '0' && x <= '9')
 	{
 		return (x + 4);
 	}
@@ -25,7 +25,7 @@ int toASCII(int x)
 	{
 		return 63;
 	}
-	if (x == 61)
+	if (x == '=')
 	{
 		return 0;
 	}
@@ -79,7 +79,7 @@ void main()
 		t = 2;
 	}
 	out = malloc(((n * 3 / 4) + 1) * sizeof(char));
-	if (in == NULL)
+	if (out == NULL)
 	{
 		printf("Memory ERROR\n");
 		return;
