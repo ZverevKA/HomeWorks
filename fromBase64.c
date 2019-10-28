@@ -21,7 +21,7 @@ int toASCII(int x)
 	{
 		return (x + 4);
 	}
-	if (x == 47)
+	if (x == '/')
 	{
 		return 63;
 	}
