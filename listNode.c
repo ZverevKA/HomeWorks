@@ -4,11 +4,11 @@
 
 List* createList()
 {
-List *list = malloc(sizeof(List));
+	List *list = malloc(sizeof(List));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
-return list;
+	return list;
 }
 
 List* addHeadNode(List *list, int val)
@@ -95,7 +95,7 @@ List* deleteVal(List *list, int val)
 			}
 			else 
 			{
-			node = deleteNoHead(list, lastNode);
+				node = deleteNoHead(list, lastNode);
 			}
 		}
 		else 
@@ -116,11 +116,11 @@ void printList(List *list)
 	}
 	else
 	{
-	while (node != NULL)
-	{
-		printf("%d\n", node->val);
-		node = node->next;
-	}
+		while (node != NULL)
+		{
+			printf("%d\n", node->val);
+			node = node->next;
+		}
 	}
 }
 
