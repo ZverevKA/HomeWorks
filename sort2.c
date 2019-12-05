@@ -161,17 +161,19 @@ unsigned* randomArr(unsigned a[], size_t n)
 
 
 void main()
-{
-	char *o[3] = {"N", "N*logN", "N^2"};
+{ 
+	char *o[] = {"N", "N*logN", "N^2"};
 	clock_t start, stop;
-	unsigned* (*diffSorts[3])(unsigned*, size_t) = {&sortN, &sortNLOGN, &sortN2};
+	unsigned* (*diffSorts[])(unsigned*, size_t) = {&sortN, &sortNLOGN, &sortN2};
+	size_t func_count = sizeof(diffSorts) / sizeof(diffSorts[0]);
 	size_t sizes[] = {5, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
 	size_t n;
 	unsigned *a;
+	size_t sizes_count = sizeof(sizes) / sizeof(sizes[0]);	
 
-	for (size_t j = 0; j < 3; j++)
+	for (size_t j = 0; j < func_count; j++)
 	{
-		for (size_t i = 0; i < 9; i++)
+		for (size_t i = 0; i < sizes_count; i++)
 		{ 
 			n = sizes[i];
 			a = malloc(n * sizeof(unsigned));
