@@ -5,6 +5,10 @@
 List* createList()
 {
 	List *list = malloc(sizeof(List));
+	if (list == NULL)
+	{
+		return NULL;
+	}
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
@@ -14,6 +18,10 @@ List* createList()
 List* addHeadNode(List *list, int val)
 {
 	Node *node = malloc(sizeof(Node));
+	if (node == NULL)
+	{
+		return NULL;
+	}
 	node->next = list->head;
 	node->val = val;
 	list->size++;
@@ -29,6 +37,10 @@ List* addHeadNode(List *list, int val)
 List* addTailNode(List *list, int val)
 {
 	Node *node = malloc(sizeof(Node));
+	if (node == NULL)
+	{
+		return NULL;
+	}
 	node->next = NULL;
 	node->val = val;
 	list->size++;
@@ -47,6 +59,10 @@ List* addTailNode(List *list, int val)
 List* addAfterNode(List *list, Node *node, int val)
 {
 	Node *newNode = malloc(sizeof(Node));
+	if (newNode == NULL)
+	{
+		return NULL;
+	}
 	newNode->val = val;
 	newNode->next = node->next;
 	node->next = newNode;
