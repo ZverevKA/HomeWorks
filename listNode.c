@@ -32,11 +32,15 @@ List* addTailNode(List *list, int val)
 	node->next = NULL;
 	node->val = val;
 	list->size++;
-	list->tail = node;
-	if (list->head = NULL)
+	if (list->head == NULL)
 	{
 		list->head = node;
 	}
+	else
+	{
+		list->tail->next = node;
+	}
+	list->tail = node;
 	return list;
 }
 
@@ -53,6 +57,24 @@ List* addAfterNode(List *list, Node *node, int val)
 	}
 	return list;
 }
+
+List* addAfterNodeNumber(List *list, size_t n, int val)
+{
+	if (list->size < n)
+	{
+		printf("List is smaller than %d\n", n);
+		return list;
+	}
+	Node *lastNode = list->head;
+	for (size_t i = 2; i <= n; i++)
+	{
+		lastNode = lastNode->next;
+	}
+	addAfterNode(list, lastNode, val);
+	return list;
+}
+
+
 
 Node* deleteHead(List *list)
 {
@@ -82,6 +104,7 @@ Node* deleteNoHead(List *list, Node *lastNode)
 
 List* deleteVal(List *list, int val)
 {
+	
 	Node *node = list->head;
 	Node *lastNode = NULL;
 	while(node != NULL)
@@ -110,7 +133,7 @@ List* deleteVal(List *list, int val)
 void printList(List *list)
 {
 	Node *node = list->head;
-	if (node == NULL)
+	if (list->head == NULL)
 	{
 		printf("List is clear\n");
 	}
@@ -135,5 +158,8 @@ void clearList(List *list)
 		free(node1);
 	}
 	free(list);
+	free(node);
+	free(node1);
 }
+
 

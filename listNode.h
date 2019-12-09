@@ -18,6 +18,7 @@ List* createList();
 List* addHeadNode(List *list, int val);
 List* addTailNode(List *list, int val);
 List* addAfterNode(List *list, Node *node, int val);
+List* addAfterNodeNumber(List *list, size_t n, int val);
 List* deleteVal(List *list, int val);
 void printList(List *list);
 void clearList(List *list);
