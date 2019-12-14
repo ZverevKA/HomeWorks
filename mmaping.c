@@ -5,10 +5,13 @@
 #include <stdio.h>
 
 
-int comparator(char *a, char *b)
+int comparator(const void *x, const void *y)
 {
-	char end = '\n';
+	char *a, *b;
+	a = *(char**)x;
+	b = *(char**)y;
 	size_t j = 0;
+	char end = '\n';
 	while (a[j] != end)
 	{
 		j++;
@@ -18,41 +21,9 @@ int comparator(char *a, char *b)
 	{
 		i++;
 	}
-	if (j > i)
-	{
-		return 1;
-	}
-	if (j < i)
-	{
-		return -1;
-	}
-	if (i = j)
-	{
-		return 0;
-	}
-
+	return (i - j);
 }
 
-void swap(char **strings, size_t a, size_t b)
-{
-	char *c = strings[a];
-	strings[a] = strings[b];
-	strings[b] = c;
-}
-
-void sort(char **strings, size_t n)
-{
-	for (size_t i = 0; i < n; i++)
-	{
-		for (size_t j = 0; j < n - 1; j++)
-		{
-			if (comparator(strings[j], strings[j + 1]) < 0)
-			{
-				swap(strings, j, j + 1);
-			}
-		}
-	}
-}
 
 
 int main(int argc, char *argv[])
@@ -88,15 +59,12 @@ int main(int argc, char *argv[])
 	
 	
 	size_t size = statbuf.st_size / sizeof(char);
-	printf("%lu\n", size);
 	char *text = src;
-	printf("%d", text[5]);
 	size_t n = 0;
 	char end = '\n';
-	char end1 = 13;
 	for (size_t i = 0; i < size; i++)
 	{
-		if (text[i] == end1)
+		if (text[i] == end)
 		{
 			n++;
 		}
@@ -111,18 +79,19 @@ int main(int argc, char *argv[])
 	for (size_t i = 0; i < n; i++)
 	{
 		strings[i] = &text[j];
-		while (text[j] != end1)
+		while (text[j] != end)
 		{
 			j++;
 		}
-		j+= 2;
+		j++;
 	}
-	sort(strings, n);
+	int (*comparator1)(const void*, const void*) = comparator; 
+	qsort(strings, n, sizeof(char*), comparator1);
 	for (size_t i = 0; i < n; i++)
 	{
 		j = 0;
 		write(fdout, (strings[i] + j), sizeof(char));
-		while (*(strings[i] + j) != end1)
+		while (*(strings[i] + j) != end)
 		{
 			j++;
 			write(fdout, (strings[i] + j), sizeof(char));
