@@ -8,7 +8,8 @@ List* createList()
 	List *list = malloc(sizeof(List));
 	if (list == NULL)
 	{
-		return NULL;
+		printf("Imposibility to create list \n")
+		exit(1);
 	}
 	list->size = 0;
 	list->head = NULL;
