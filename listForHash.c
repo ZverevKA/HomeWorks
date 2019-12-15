@@ -6,6 +6,10 @@
 List* createList()
 {
 	List *list = malloc(sizeof(List));
+	if (list == NULL)
+	{
+		return NULL;
+	}
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
@@ -15,6 +19,11 @@ List* createList()
 List* addHeadNode(List *list, size_t val, char *word)
 {
 	Node *node = malloc(sizeof(Node));
+	if (node == NULL)
+	{
+		printf("Imposibility to create node\n")
+		exit(1);
+	}
 	node->next = list->head;
 	node->val = val;
 	strcpy(node->word, word);
@@ -31,6 +40,11 @@ List* addHeadNode(List *list, size_t val, char *word)
 List* addTailNode(List *list, size_t val, char *word)
 {
 	Node *node = malloc(sizeof(Node));
+	if (node == NULL)
+	{
+		printf("Imposibility to create node \n");
+		exit(1);
+	}
 	node->next = NULL;
 	node->val = val;
 	strcpy(node->word, word);
@@ -50,6 +64,11 @@ List* addTailNode(List *list, size_t val, char *word)
 List* addAfterNode(List *list, Node *node, size_t val, char *word)
 {
 	Node *newNode = malloc(sizeof(Node));
+	if (newNode == NULL)
+	{
+		printf("Imposibility to create node \n");
+		exit(1);
+	}
 	newNode->val = val;
 	strcpy(newNode->word, word);
 	newNode->next = node->next;
@@ -111,7 +130,7 @@ List* deleteVal(List *list, char *word)
 	
 	Node *node = list->head;
 	Node *lastNode = NULL;
-	while(node != NULL)
+	while (node != NULL)
 	{
 		if (strcmp(node->word, word) == 0)
 		{
@@ -137,7 +156,7 @@ List* deleteVal(List *list, char *word)
 Node* scrollList(List *list, char *word)
 {
 	Node *node = list->head;
-	while(node != NULL)
+	while (node != NULL)
 	{
 		if (strcmp(node->word, word) == 0)
 		{

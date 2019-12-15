@@ -1,9 +1,10 @@
 #include <stdlib.h>
+#define MAX_LENGT 30
 
 typedef struct Node1
 {
 	size_t val;
-	char word[30];
+	char word[MAX_LENGTH];
 	struct Node1 *next;
 } Node;
 

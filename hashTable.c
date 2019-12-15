@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-HashTable *creatHashTable(size_t (*func)(char*), size_t n)
+HashTable *createHashTable(size_t (*func)(char*), size_t n)
 {
 	HashTable *table = malloc(sizeof(HashTable));
 	if (table == NULL)
@@ -18,14 +18,17 @@ HashTable *creatHashTable(size_t (*func)(char*), size_t n)
 	table->cells = malloc(n * sizeof(List*));
 	if (table->cells == NULL)
 	{
-		return NULL;
+		printf("Imposibility to create Hash Table\n");
+		exit(1);
 	}
 	for (size_t i = 0; i < n; i++)
 	{
 		table->cells[i] = createList();
 		if (table->cells[i] == NULL)
 		{
-			return NULL;
+			printf("Imposibility to create Hash Table \n");
+			exit(1);
+		
 		}
 	}
 }

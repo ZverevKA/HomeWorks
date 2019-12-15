@@ -9,7 +9,7 @@ typedef struct HashTable1
 	size_t size;
 } HashTable;
 
-HashTable *creatHashTable(size_t (*func)(char*), size_t n);
+HashTable *createHashTable(size_t (*func)(char*), size_t n);
 HashTable *deleteHashTable(HashTable *table);
 void hashTableStatistics(HashTable *table);
 HashTable *addElement(HashTable *table, char *word);
