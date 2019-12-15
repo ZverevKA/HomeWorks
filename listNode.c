@@ -62,6 +62,7 @@ List* addTailNode(List *list, int val)
 List* addAfterNode(List *list, Node *node, int val)
 {
 	Node *newNode = malloc(sizeof(Node));
+	if (newNode == NULL)
 	{
 		printf("Imposible to create node\n");
 		exit(1);
