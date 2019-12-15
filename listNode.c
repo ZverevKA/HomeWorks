@@ -7,7 +7,8 @@ List* createList()
 	List *list = malloc(sizeof(List));
 	if (list == NULL)
 	{
-		return NULL;
+		printf("Imposibility to create list \n");
+		exit(1);
 	}
 	list->size = 0;
 	list->head = NULL;
@@ -20,7 +21,8 @@ List* addHeadNode(List *list, int val)
 	Node *node = malloc(sizeof(Node));
 	if (node == NULL)
 	{
-		return NULL;
+		printf("Imposible to create node\n");
+		exit(1);
 	}
 	node->next = list->head;
 	node->val = val;
@@ -39,7 +41,8 @@ List* addTailNode(List *list, int val)
 	Node *node = malloc(sizeof(Node));
 	if (node == NULL)
 	{
-		return NULL;
+		printf("Imposible to create node\n");
+		exit(1);
 	}
 	node->next = NULL;
 	node->val = val;
@@ -59,9 +62,9 @@ List* addTailNode(List *list, int val)
 List* addAfterNode(List *list, Node *node, int val)
 {
 	Node *newNode = malloc(sizeof(Node));
-	if (newNode == NULL)
 	{
-		return NULL;
+		printf("Imposible to create node\n");
+		exit(1);
 	}
 	newNode->val = val;
 	newNode->next = node->next;

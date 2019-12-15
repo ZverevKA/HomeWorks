@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include "listNode.h"
 #include <stdlib.h>
+#define OP_CREATE 1
+#define OP_ADD_HEAD 2
+#define OP_ADD_TAIL 3
+#define OP_ADD_AFTER 4
+#define OP_DELETE_FOR_VAL 5
+#define OP_PRINT 6
+#define OP_CLEAR 7
+#define OP_EXIT 8
 
 void main()
 {
@@ -8,21 +16,26 @@ void main()
 	size_t n;
 	int creation = 0;
 	List* list = malloc(sizeof(List));
-	printf("1. Create list\n");
-	printf("2. Add head node\n");
-	printf("3. Add tail node\n");
-	printf("4. Add after n node\n");
-	printf("5. Delete for value\n");
-	printf("6. Print list\n");
-	printf("7. Clear list\n");
-	printf("8. Exit\n");
-	while (x != 8)
+	if (list == NULL)
+	{
+		printf("Memory ERROR\n");
+		return;
+	}
+	printf("%d. Create list\n", OP_CREATE);
+	printf("%d. Add head node\n", OP_ADD_HEAD);
+	printf("%d. Add tail node\n", OP_ADD_TAIL);
+	printf("%d. Add after n node\n", OP_ADD_AFTER);
+	printf("%d. Delete for value\n", OP_DELETE_FOR_VAL);
+	printf("%d. Print list\n", OP_PRINT);
+	printf("%d. Clear list\n", OP_CLEAR);
+	printf("%d. Exit\n", OP_EXIT);
+	while (x != OP_EXIT)
 	{
 		printf("Enter number of opiration\n");
 		scanf("%d", &x);
 		switch (x)
 		{
-			case 1:
+			case OP_CREATE:
 				if (creation == 0)
 				{
 					list = createList();
@@ -33,7 +46,7 @@ void main()
 					printf("Your list has already been created\n");
 				}
 				break;
-			case 2:
+			case OP_ADD_HEAD:
 				if (creation != 0)
 				{
 					printf("Enter value of head node\n");
@@ -45,7 +58,7 @@ void main()
 					printf("Your list hasn't been created\n");
 				}
 				break;
-			case 3:
+			case OP_ADD_TAIL:
 				if (creation != 0)
 				{
 					printf("Enter value of tail node\n");
@@ -57,7 +70,7 @@ void main()
 					printf("Your list hasn't been created\n");
 				}
 				break;
-			case 4:
+			case OP_ADD_AFTER:
 				if (creation != 0)
 				{
 					printf("Enter number of node and value\n");
@@ -69,7 +82,7 @@ void main()
 					printf("Your list hasn't been created\n");
 				}
 				break;
-			case 5:
+			case OP_DELETE_FOR_VAL:
 				if (creation != 0)
 				{
 					printf("Enter value\n");
@@ -81,7 +94,7 @@ void main()
 					printf("Your list hasn't been created\n");
 				}
 				break;
-			case 6:
+			case OP_PRINT:
 				if (creation != 0)
 				{
 					printList(list);
@@ -91,7 +104,7 @@ void main()
 					printf("Your list hasn't been created\n");
 				}
 				break;
-			case 7:
+			case OP_CLEAR:
 				if (creation != 0)
 				{
 					clearList(list);
@@ -102,7 +115,7 @@ void main()
 					printf("Your list hasn't been created\n");
 				}
 				break;
-			case 8:
+			case OP_EXIT:
 				if (creation != 0)
 				{
 					clearList(list);
