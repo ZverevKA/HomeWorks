@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#define MAX_LENGT 30
+#define MAX_LENGTH 30
 
 typedef struct Node1
 {
