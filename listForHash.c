@@ -8,7 +8,7 @@ List* createList()
 	List *list = malloc(sizeof(List));
 	if (list == NULL)
 	{
-		printf("Imposibility to create list \n")
+		printf("Imposibility to create list \n");
 		exit(1);
 	}
 	list->size = 0;
@@ -22,7 +22,7 @@ List* addHeadNode(List *list, size_t val, char *word)
 	Node *node = malloc(sizeof(Node));
 	if (node == NULL)
 	{
-		printf("Imposibility to create node\n")
+		printf("Imposibility to create node\n");
 		exit(1);
 	}
 	node->next = list->head;
@@ -170,6 +170,21 @@ Node* scrollList(List *list, char *word)
 	}
 	return node;
 }
+
+size_t maxVal(List *list)
+{
+	size_t val = 0;
+	Node *node = list->head;
+	while (node != NULL)
+	{
+		if (node->val > val)
+		{
+			val = node->val;
+		}
+		node = node->next;
+	}
+	return val;
+}
 	
 void printList(List *list)
 {
@@ -199,8 +214,6 @@ void clearList(List *list)
 		free(node1);
 	}
 	free(list);
-	free(node);
-	free(node1);
 }
 
 

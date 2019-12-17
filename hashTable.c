@@ -13,8 +13,6 @@ HashTable *createHashTable(size_t (*func)(char*), size_t n)
 	}
 	table->size = n;
 	table->func = func;
-	table->elements_number = 0;
-	table->not_empty_cells = 0;
 	table->cells = malloc(n * sizeof(List*));
 	if (table->cells == NULL)
 	{
@@ -31,9 +29,10 @@ HashTable *createHashTable(size_t (*func)(char*), size_t n)
 		
 		}
 	}
+	return table;
 }
 
-HashTable *deleteHashTable(HashTable *table)
+void deleteHashTable(HashTable *table)
 {
 	for (size_t i = 0; i < table->size; i++)
 	{
@@ -44,30 +43,45 @@ HashTable *deleteHashTable(HashTable *table)
 }
 
 
+
 void hashTableStatistics(HashTable *table)
 {
 	size_t allLength = 0;
+	size_t elements_number = 0;
+	size_t max_val = 0;
+	size_t val;
 	size_t max = 0;
 	size_t min = INT_MAX;
 	size_t size;
-	printf("Number of elements %d\n", table->elements_number);
-	printf("Number of not empty cells %d\n", table->not_empty_cells);
+	size_t not_empty_cells = 0;
 	for (size_t i = 0; i < table->size; i++)
 	{
 		size = (table->cells[i])->size;
-		allLength += size;
-		if (max < size)
+		if (size > 0)
 		{
-			max = size;
-		}
-		if ((min > size) && (size != 0))
-		{
-			min = size;
+			not_empty_cells++;
+			elements_number += size;
+			if (max < size)
+			{
+				max = size;
+			}
+			if ((min > size) && (size != 0))
+			{
+				min = size;
+			}
+			val = maxVal(table->cells[i]);
+			if (val > max_val)
+			{
+				max_val = val;
+			}
 		}
 	}
-	printf("Average length %d\n", (allLength / table->size));
+	printf("Elements number %d\n", elements_number);
+	printf("Number of not empty cells %d\n", not_empty_cells);
+	printf("Average length %d\n", (elements_number / not_empty_cells));
 	printf("Max length %d\n", max);
-	printf("Min length %d\n", min); 
+	printf("Min length %d\n", min);
+	printf("Max value %d\n", max_val); 
 }
 
 
@@ -78,6 +92,7 @@ HashTable *addElement(HashTable *table, char *word)
 	if (node == NULL)
 	{
 		addTailNode(table->cells[hash], 1, word);
+		
 	}
 	else 
 	{

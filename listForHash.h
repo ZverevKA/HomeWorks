@@ -23,6 +23,7 @@ List* addAfterNode(List *list, Node *node, size_t val, char *word);
 List* addAfterNodeNumber(List *list, size_t n, size_t val, char *word);
 List* deleteVal(List *list, char *word);
 Node* scrollList(List *list, char *word);
+size_t maxVal(List *list);
 void printList(List *list);
 void clearList(List *list);
 
