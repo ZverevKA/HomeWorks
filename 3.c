@@ -11,9 +11,9 @@ void main()
 	{
 		a[i] = UNTOUCHED_NUMBER;
 	}
-	printf("Enter number of primes\n");
+	printf("Enter number of numbers\n");
 	scanf("%d", &n);
-	printf("Enter primes\n");
+	printf("Enter numbers\n");
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &x);
@@ -26,7 +26,7 @@ void main()
 	}
 	for (int i = 0; i < k; i++)
 	{
-		printf("%d\n", a[i]);
+		printf("%d\n", b[i]);
 	}
 } 
 	
