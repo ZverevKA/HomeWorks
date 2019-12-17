@@ -7,6 +7,7 @@
 #include <string.h>
 #define HASH_FUNC_NUMBER 31
 #define HASH_SIZE 10000
+#include <time.h>
 
 
 char capitalLetter(char *x)
@@ -65,6 +66,7 @@ size_t func3(char *word)
 
 int main(int argc, char *argv[])
 {
+	clock_t start, stop;
 	HashTable *table;
 	size_t (*hashFunc[])(char*) = {func1, func2, func3};
 	size_t numFunc = sizeof(hashFunc) / sizeof(hashFunc[0]);
@@ -97,6 +99,7 @@ int main(int argc, char *argv[])
 	char word[MAX_LENGTH];
 	for (size_t j = 0; j < numFunc; j++)
 	{
+		start = clock();
 		table = createHashTable(hashFunc[j], tableSize[j]);
 		if (table == NULL)
 		{
@@ -118,6 +121,8 @@ int main(int argc, char *argv[])
 		}
 		hashTableStatistics(table);
 		deleteHashTable(table);
+		stop = clock();
+		printf("Time %f\n", (float)(stop - start) / CLOCKS_PER_SEC);
 	}
 
 
