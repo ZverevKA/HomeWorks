@@ -149,6 +149,51 @@ List* deleteVal(List *list, int val)
 	}
 	return list;
 }
+
+
+Node *createCycle(Node *node)
+{
+	Node *node1 = node;
+	if (checkForCycle(node) != NULL)
+	{
+		printf("Your list has cycle\n");
+		return node;
+	}
+	while (node1->next != NULL)
+	{
+		node1 = node1->next;
+	}
+	node1->next = node;
+	return node;
+}
+		
+
+node *checkForCycle(Node *node)
+{
+	Node element_of_cycle = NULL;
+	flag = 0;
+	Node *node1 = node;
+	Node *node2 = node;
+	while (node1 != NULL && node2 != NULL)
+	{
+		node1 = node1->next;
+		if (node2->next == NULL)
+		{
+			break;
+		}
+		else
+		{
+			node2 = node2->next-next;
+		}
+		if (node1 == node2)
+		{
+			element_of_cycle = node1;
+			break;
+		}
+	}
+	return element_of_cycle;
+}
+
 	
 void printList(List *list)
 {
@@ -179,7 +224,6 @@ void clearList(List *list)
 	}
 	free(list);
 	free(node);
-	free(node1);
 }
 
 
