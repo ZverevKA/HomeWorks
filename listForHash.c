@@ -17,7 +17,7 @@ List* createList()
 	return list;
 }
 
-List* addHeadNode(List *list, size_t val, char *word)
+Node* addHeadNode(List *list, char *word)
 {
 	Node *node = malloc(sizeof(Node));
 	if (node == NULL)
@@ -26,7 +26,7 @@ List* addHeadNode(List *list, size_t val, char *word)
 		exit(1);
 	}
 	node->next = list->head;
-	node->val = val;
+	node->val = default_val;
 	strcpy(node->word, word);
 	list->size++;
 	list->head = node;
@@ -35,10 +35,10 @@ List* addHeadNode(List *list, size_t val, char *word)
 		list->tail = node;
 	}
 	
-	return list;
+	return node;
 }
 
-List* addTailNode(List *list, size_t val, char *word)
+Node* addTailNode(List *list, char *word)
 {
 	Node *node = malloc(sizeof(Node));
 	if (node == NULL)
@@ -47,7 +47,7 @@ List* addTailNode(List *list, size_t val, char *word)
 		exit(1);
 	}
 	node->next = NULL;
-	node->val = val;
+	node->val = default_val;
 	strcpy(node->word, word);
 	list->size++;
 	if (list->head == NULL)
@@ -59,10 +59,10 @@ List* addTailNode(List *list, size_t val, char *word)
 		list->tail->next = node;
 	}
 	list->tail = node;
-	return list;
+	return node;
 }
 
-List* addAfterNode(List *list, Node *node, size_t val, char *word)
+Node* addAfterNode(List *list, Node *node, char *word)
 {
 	Node *newNode = malloc(sizeof(Node));
 	if (newNode == NULL)
@@ -70,7 +70,7 @@ List* addAfterNode(List *list, Node *node, size_t val, char *word)
 		printf("Imposibility to create node \n");
 		exit(1);
 	}
-	newNode->val = val;
+	newNode->val = default_val;
 	strcpy(newNode->word, word);
 	newNode->next = node->next;
 	node->next = newNode;
@@ -79,10 +79,10 @@ List* addAfterNode(List *list, Node *node, size_t val, char *word)
 	{
 		list->tail = newNode;
 	}
-	return list;
+	return newNode;
 }
 
-List* addAfterNodeNumber(List *list, size_t n, size_t val, char *word)
+Node* addAfterNodeNumber(List *list, size_t n, char *word)
 {
 	if (list->size < n)
 	{
@@ -94,8 +94,7 @@ List* addAfterNodeNumber(List *list, size_t n, size_t val, char *word)
 	{
 		lastNode = lastNode->next;
 	}
-	addAfterNode(list, lastNode, val, word);
-	return list;
+	return addAfterNode(list, lastNode, word);
 }
 
 
@@ -170,6 +169,7 @@ Node* scrollList(List *list, char *word)
 	}
 	return node;
 }
+
 
 size_t maxVal(List *list)
 {

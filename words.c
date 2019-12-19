@@ -117,6 +117,7 @@ int main(int argc, char *argv[])
 			{
 				i += separatingWord(text + i, word);		
 				addElement(table, word);
+				setVal(table, word, findVal(table, word) + 1);
 			}	 
 		}
 		hashTableStatistics(table);

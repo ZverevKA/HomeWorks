@@ -85,20 +85,16 @@ void hashTableStatistics(HashTable *table)
 }
 
 
-HashTable *addElement(HashTable *table, char *word)
+Node *addElement(HashTable *table, char *word)
 {
 	size_t hash = (table->func)(word);
 	Node *node = scrollList(table->cells[hash], word);
 	if (node == NULL)
 	{
-		addTailNode(table->cells[hash], 1, word);
+		node = addTailNode(table->cells[hash], word);
 		
 	}
-	else 
-	{
-		node->val++;
-	}
-	return table;
+	return node;
 }
 
 HashTable *deleteElement(HashTable *table, char *word)
@@ -120,4 +116,12 @@ size_t findVal(HashTable *table, char *word)
 	{
 		return node->val;
 	}
+}
+
+Node *setVal(HashTable *table, char *word, size_t val)
+{
+	size_t hash = (table->func)(word);
+	Node *node = scrollList(table->cells[hash], word);
+	node->val = val;
+	return node;
 }
