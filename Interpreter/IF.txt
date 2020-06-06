@@ -1,0 +1,37 @@
+if (x < y) A else B
+
+ldc y
+ldc x
+cmp
+ldc 1
+add
+br A
+jmp B
+
+
+
+A:      ...
+	jmp endif
+
+B:      ...
+	jmp endif		
+endif: ret
+
+
+
+if (x <= y) A else B     <=>  if (x > y) B else A  <=> if (y < x) B else A
+
+ldc x				меняем в первом коде А на B и x на y !
+ldc y
+cmp
+ldc 1
+add
+br B
+jmp A
+
+
+A:      ...
+	jmp endif
+B:      ...
+	jmp endif
+endif: ret
