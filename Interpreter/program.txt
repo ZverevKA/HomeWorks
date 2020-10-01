@@ -1,65 +1,67 @@
-ldc N
-st 0
-ldc 2
-st 4	      // начальная сумма 2( 1 + 1)
+ldc 60
 ldc 1
-st l
+add
 st 1
 ldc 1
 st 2
+st 3
+ldc 2
+st 4
 
-			// тк чётность зависит от остатка по модулю 3
-				напишем цикл для 3 последователньных чисел
-B:	ld 1
-	ld 2
-	st 3		// приводим на каждом шаге нашу 
-	add			первую и вторую ячейку памяти на след.
-	st 2			число фибоначчи
-	ld 3		
-	st 1
-
-	ld 1
-	ld 2
-	st 3
-	add
-	st 2
-	ld 3
-	st 1
-	ld 2
-	ld 0
-	cmp
-	ldc 1
-	add        // получаем на стеке 0, если наше число больше и 1 или 2, если N больше
-	br summ1
-
-A:	ld 1
-	ld 2
-	st 3
-	add
-	st 2
-	ld 3
-	st 1
-	ld 2
-	ld 0
-	cmp
-	ldc 1
-	add        // получаем на стеке 0, если наше число больше и 1 или 2, если N больше
-	br summ2
-	
-	ld 4 
-
-	br l
+A: ld 2
+ld 3
+add
+st 5
+ld 3
 st 2
-ret 
+ld 5
+st 3
+ld 1
+cmp
+ldc -1
+add
+br end
+jmp B
 
-summ1:   ld 2
-	ld 4
-	add
-	st 4
-	jmp A 	 
 
-summ2:   ld 2
-	ld 4
-	add
-	st 4
-	jmp B
+B: ld 2
+ld 3
+add
+st 5
+ld 3
+st 2
+ld 5
+st 3
+ld 1
+cmp
+ldc -1
+add
+br end
+ld 4
+ld 3
+add
+st 4
+jmp C
+
+C: ld 2
+ld 3
+add
+st 5
+ld 3
+st 2
+ld 5
+st 3
+ld 1
+cmp
+ldc -1
+add
+br end
+ld 4
+ld 3
+add
+st 4
+jmp A
+
+
+end: ld 4
+ret

@@ -183,11 +183,13 @@ void cmpStack(struct Stack *stack)
 	{
 		stack->data[stack->size] = 1;
 		stack->size ++;
+		return;
 	}
 	if (stack->data[stack->size -1] < stack->data[stack->size - 2])
 	{
 		stack->data[stack->size] = -1;
 		stack->size ++;
+		return;
 	}
 	stack->data[stack->size] = 0;
 	stack->size ++;
@@ -233,7 +235,7 @@ void collectLabels(FILE* file, struct Interpreter* interpreter)
 	size_t i = 0;
 	while (fgets(str, MAX_LINE_SIZE, file))
 	{
-		if (getCommand(str) == noCommand)
+		if (getCommandCode(str) == noCommand)
 		{
 			continue;
 		}
@@ -289,15 +291,31 @@ void collectCommands(FILE* file, struct Interpreter* interpreter)
 		}
 		if (code == jmp)
 		{
+			char label[MAX_LINE_SIZE];
+			size_t f = 0;
 			argPosition = strstr(str, "jmp") - str + 4;
 			argChar = str + argPosition;
-			interpreter->program.command[i].arg = findVal(interpreter->program.label, argChar);
+			while (argChar[f] != 10)
+			{
+				label[f] = argChar[f];
+				f++;
+			}
+			label[f] = '\0';
+			interpreter->program.command[i].arg = (int32_t)findVal(interpreter->program.label, label);
 		}
 		if (code == br)
 		{
+			char label[MAX_LINE_SIZE];
+			size_t f = 0;
 			argPosition = strstr(str, "br") - str + 3;
 			argChar = str + argPosition;
-			interpreter->program.command[i].arg = (int32_t)findVal(interpreter->program.label, argChar);
+			while (argChar[f] != 10)
+			{
+				label[f] = argChar[f];
+				f++;
+			}
+			label[f] = '\0';
+			interpreter->program.command[i].arg = (int32_t)findVal(interpreter->program.label, label);
 		}
 		i++;
 	}
