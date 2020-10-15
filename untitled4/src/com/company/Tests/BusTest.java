@@ -10,7 +10,7 @@ public class BusTest {
 
     @Before
     public void setUp() throws Exception{
-        bus = new Bus("GREEN", 140, "GERMANY", 192, 152876,10);
+        bus = new Bus("GREEN", 140, "GERMANY", 192, 152876, 10);
     }
     @Test
     public void getterNumberOfPeopleTest(){

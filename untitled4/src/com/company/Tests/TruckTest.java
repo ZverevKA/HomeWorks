@@ -10,7 +10,7 @@ public class TruckTest {
 
     @Before
     public void setUp() throws Exception{
-        truck = new Truck("BLACK",120,"RUSSIA",220,547831,1500);
+        truck = new Truck("BLACK", 120, "RUSSIA", 220, 547831, 1500);
     }
     @Test
     public void getterNumberOfPeopleTest(){
