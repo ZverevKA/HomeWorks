@@ -10,15 +10,15 @@
 
 enum OpCodes
 {
-    ld,
-    st,
-    ldc,
-    add,
-    sub,
-    cmp,
-    jmp,
-    br,
-    ret,
+	ld,
+	st,
+	ldc,
+	add,
+	sub,
+	cmp,
+	jmp,
+	br,
+	ret,
 	noCommand
 };
 
@@ -119,8 +119,8 @@ void pushStack(struct Stack *stack, int32_t x)
 	{
 		printf("Stack is full\n");
 	}
-    stack->data[stack->size] = x;
-    stack->size++;
+	stack->data[stack->size] = x;
+	stack->size++;
 }
 	
 int32_t getStack(struct Stack *stack)
