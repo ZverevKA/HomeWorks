@@ -12,8 +12,8 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception{
-        carBus = new Bus("GREEN", 140, "GERMANY", 192, 152876,10);
-        carTruck = new Truck("BLACK",120,"RUSSIA",220,547831,1500);
+        carBus = new Bus("GREEN", 140, "GERMANY", 192, 152876, 10);
+        carTruck = new Truck("BLACK", 120, "RUSSIA", 220, 547831, 1500);
     }
 
     @Test

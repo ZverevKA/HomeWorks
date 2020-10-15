@@ -16,5 +16,9 @@ public class TruckTest {
     public void getterNumberOfPeopleTest(){
         assertEquals(1500, truck.getCapacity());
     }
+    @Test
+    public void informationTest(){
+        assertEquals("Number:547831\nMax speed:120\nCountry:RUSSIA\nPower:220\nCapacity:1500", truck.information());
+    }
 }
 

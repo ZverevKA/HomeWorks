@@ -16,4 +16,9 @@ public class BusTest {
     public void getterNumberOfPeopleTest(){
         assertEquals(10, bus.getNumberOfPeople());
     }
+    @Test
+    public void informationTest(){
+        assertEquals("Number:152876\nMax speed:140\nCountry:GERMANY\nPower:192\nNumber of people:10", bus.information());
+    }
+
 }
