@@ -45,9 +45,18 @@ public class ParController {
     @FXML
     void initialize() {
         OK.setOnAction(actionEvent -> {
-            Parabola parabola = new Parabola(-controller.getMaxBorder(), controller.getMaxBorder(), Double.parseDouble(pKoef.getText()));
-            controller.drawNewCurve(parabola);
-            OK.getScene().getWindow().hide();
+            try {
+                Parabola parabola = new Parabola(-controller.getMaxBorder(), controller.getMaxBorder(), Double.parseDouble(pKoef.getText()));
+                controller.drawNewCurve(parabola);
+                OK.getScene().getWindow().hide();
+            } catch (java.lang.NumberFormatException e){
+                try {
+                    IncorrectInputController inController = new IncorrectInputController();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
+            }
         });
     }
 }

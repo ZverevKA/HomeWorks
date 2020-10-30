@@ -49,9 +49,17 @@ public class HypController {
     @FXML
     void initialize() {
         OK.setOnAction(actionEvent -> {
-            Hyperbola hyperbola = new Hyperbola(-controller.getMaxBorder(), controller.getMaxBorder(), Double.parseDouble(aKoef.getText()), Double.parseDouble(bKoef.getText()));
-            controller.drawNewCurve(hyperbola);
-            OK.getScene().getWindow().hide();
+            try {
+                Hyperbola hyperbola = new Hyperbola(-controller.getMaxBorder(), controller.getMaxBorder(), Double.parseDouble(aKoef.getText()), Double.parseDouble(bKoef.getText()));
+                controller.drawNewCurve(hyperbola);
+                OK.getScene().getWindow().hide();
+            } catch (java.lang.NumberFormatException e){
+                try {
+                    IncorrectInputController inController = new IncorrectInputController();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
         });
 
 

@@ -49,9 +49,18 @@ public class EliController {
     @FXML
     void initialize() {
         OK.setOnAction(actionEvent -> {
-            Ellipse ellipse = new Ellipse(-controller.getMaxBorder(), controller.getMaxBorder(), Double.parseDouble(aKoef.getText()), Double.parseDouble(bKoef.getText()));
-            controller.drawNewCurve(ellipse);
-            OK.getScene().getWindow().hide();
+            try {
+                Ellipse ellipse = new Ellipse(-controller.getMaxBorder(), controller.getMaxBorder(), Double.parseDouble(aKoef.getText()), Double.parseDouble(bKoef.getText()));
+                controller.drawNewCurve(ellipse);
+                OK.getScene().getWindow().hide();
+            } catch (java.lang.NumberFormatException e){
+                try {
+                    IncorrectInputController inController = new IncorrectInputController();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+
         });
 
     }

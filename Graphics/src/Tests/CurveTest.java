@@ -15,16 +15,9 @@ class CurveTest {
 
     private Curve eli, hyp, par;
 
-    @BeforeEach
-    public void setUp() {
-        eli = new Ellipse(-30, 30, 10, 15);
-        hyp = new Hyperbola(-30, 30, 10, 15);
-        par = new Parabola(-30, 30, 15);
-    }
-
-
     @Test
     void getYEllipse() {
+        eli = new Ellipse(-30, 30, 10, 15);
         ArrayList<Double> eliPoints1 = eli.getY(0);
         ArrayList<Double> eliPoints2 = eli.getY(10);
         assertEquals(eliPoints1.size(), 2);
@@ -34,6 +27,7 @@ class CurveTest {
     }
     @Test
     void getYHyperbola(){
+        hyp = new Hyperbola(-30, 30, 10, 15);
         ArrayList<Double> hypPoints1 = hyp.getY(0);
         assertEquals(hypPoints1.size(), 2);
         assertEquals(hypPoints1.get(0), 15.0 );
@@ -41,6 +35,7 @@ class CurveTest {
     }
     @Test
     void getYParabola(){
+        par = new Parabola(-30, 30, 15);
         ArrayList<Double> parPoints1 = par.getY(0);
         ArrayList<Double> parPoints2 = par.getY(15);
         assertEquals(parPoints1.size(), 1);
