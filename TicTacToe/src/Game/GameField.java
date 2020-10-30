@@ -6,12 +6,15 @@ public  class GameField {
     private int [][] field;
     public final int SIZE;
     public final int ROW_TO_WIN;
-    public final int EMPTY = 2;
     public final int PLAYER0 = 0;
     public final int PLAYER1 = 1;
+    public final int IN_PROGRESS = 2;
     public final int DRAW = 3;
+    public final int PLAYER0_SIGN = 0;
+    public final int PLAYER1_SIGN = 1;
+    public final int EMPTY = 2;
     private int whoseTurn;
-    private int gameStatus = EMPTY;
+    private int gameStatus = IN_PROGRESS;
     public int numberOfSteps;
     public final int MAX_STEPS;
 

@@ -16,16 +16,16 @@ public class GameWindow extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int status = gameField.getGameStatus();
-        if (status == gameField.EMPTY) {
+        if (status == gameField.IN_PROGRESS) {
             for (int i = 0; i < gameField.SIZE; i++) {
                 for (int j = 0; j < gameField.SIZE; j++) {
                     if (gameField.getCell(i, j) == gameField.EMPTY) {
                         g.drawImage(img3.getImage(), i * CELL_SIZE, j * CELL_SIZE, this);
                     }
-                    if (gameField.getCell(i, j) == gameField.PLAYER0) {
+                    if (gameField.getCell(i, j) == gameField.PLAYER0_SIGN) {
                         g.drawImage(img0.getImage(), i * CELL_SIZE, j * CELL_SIZE, this);
                     }
-                    if (gameField.getCell(i, j) == gameField.PLAYER1) {
+                    if (gameField.getCell(i, j) == gameField.PLAYER1_SIGN) {
                         g.drawImage(img1.getImage(), i * CELL_SIZE, j * CELL_SIZE, this);
                     }
                 }
