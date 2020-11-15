@@ -1,6 +1,7 @@
 package Test;
 
 import Main.Pair;
+import Main.SingleThreadAlg;
 import Parallel.ParallelScan;
 import org.openjdk.jmh.annotations.*;
 
@@ -8,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Fork(value = 2)
+@Fork(value = 1)
 public class ProductivityTest {
     private Pair[] array;
     private final int sizeOfArray = 1000000;
@@ -25,6 +26,10 @@ public class ProductivityTest {
     @Benchmark
     public void prodTest(){
         Pair result = (Pair) ParallelScan.doScan(array, numOfThread);
+    }
+    @Benchmark
+    public void singleThreadTest(){
+        long result = SingleThreadAlg.doAlg(array);
     }
 
 

@@ -1,0 +1,36 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_STACK_OVERFLOW (0xc00000fd) at pc=0x00007fff2e92e573, pid=9768, tid=7704
+#
+# JRE version: Java(TM) SE Runtime Environment (14.0.2+12) (build 14.0.2+12-46)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (14.0.2+12-46, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# Problematic frame:
+# V  [jvm.dll+0x33e573]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.2\lib\idea_rt.jar=51129:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.2\bin -Dfile.encoding=UTF-8 -XX:CompileCommandFile=C:\Users\User\AppData\Local\Temp\jmh2468615707616790073compilecommand org.openjdk.jmh.runner.ForkedMain 127.0.0.1 51826
+
+Host: Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.546)
+Time: Sun Nov  1 19:48:54 2020 RTZ 2 (зима) elapsed time: 77 seconds (0d 0h 1m 17s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000019dcb012800):  JavaThread "Thread-15149" daemon [_thread_in_vm, id=7704, stack(0x0000001da1800000,0x0000001da1900000)]
+
+Stack: [0x0000001da1800000,0x0000001da1900000],  sp=0x0000001da18ff4c0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x33e573]
+V  [jvm.dll+0x5f89c2]
+V  [jvm.dll+0x33f06c]
+V  [jvm.dll+0x33f2f7]
+V  [jvm.dll+0x3b4f81]
+V  [jvm.dll+0x7070cd]
+V  [jvm.dll+0x6ffeda]

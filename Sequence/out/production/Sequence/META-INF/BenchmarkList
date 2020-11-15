@@ -1,1 +1,2 @@
-JMH S 21 Test.ProductivityTest S 48 Test.generated.ProductivityTest_prodTest_jmhTest S 8 prodTest S 11 AverageTime E A 1 1 1 E E E E E E E I 1 2 E E E E E M 1 11 numOfThread 3 1 1 1 2 1 4 U 12 MILLISECONDS E E 
+JMH S 21 Test.ProductivityTest S 48 Test.generated.ProductivityTest_prodTest_jmhTest S 8 prodTest S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E M 1 11 numOfThread 3 1 1 1 2 1 4 U 12 MILLISECONDS E E 
+JMH S 21 Test.ProductivityTest S 56 Test.generated.ProductivityTest_singleThreadTest_jmhTest S 16 singleThreadTest S 11 AverageTime E A 1 1 1 E E E E E E E I 1 1 E E E E E M 1 11 numOfThread 3 1 1 1 2 1 4 U 12 MILLISECONDS E E 
