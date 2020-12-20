@@ -2,7 +2,7 @@ package Main;
 
 import java.awt.image.BufferedImage;
 
-public class FilterThread extends Thread{
+public class FilterThread extends Thread {
 
     private BufferedImage input;
     private BufferedImage output;
@@ -20,16 +20,16 @@ public class FilterThread extends Thread{
 
     @Override
     public void run() {
-    if (mode == Filter.HORIZONTAL){
-            for (int j = from; j < to; j++){
-                for (int i = 0; i < input.getWidth(); i++){
+    if (mode == Filter.HORIZONTAL) {
+            for (int j = from; j < to; j++) {
+                for (int i = 0; i < input.getWidth(); i++) {
                     output.setRGB(i, j, Filter.getNewRGB(i, j, input));
                 }
             }
         }
-        if (mode == Filter.VERTICAL){
-            for (int i = from; i < to; i++){
-                for (int j = 0; j < input.getHeight(); j++){
+        if (mode == Filter.VERTICAL) {
+            for (int i = from; i < to; i++) {
+                for (int j = 0; j < input.getHeight(); j++) {
                     output.setRGB(i, j, Filter.getNewRGB(i, j, input));
                 }
             }

@@ -10,7 +10,7 @@ public class Filter {
     private BufferedImage output;
     private int mode;
 
-    public Filter(BufferedImage input){
+    public Filter(BufferedImage input) {
         this.input = input;
         output = new BufferedImage(input.getWidth(), input.getHeight(), input.getType());
     }
@@ -23,7 +23,7 @@ public class Filter {
     public int getMode(){
         return mode;
     }*/
-    public BufferedImage singleThreadUse(){
+    public BufferedImage singleThreadUse() {
         for (int i = 0; i < output.getWidth(); i++){
             for (int j = 0; j < output.getHeight(); j++){
                 output.setRGB(i, j, getNewRGB(i, j, input));
@@ -31,7 +31,7 @@ public class Filter {
         }
         return output;
     }
-    private static int convertColorsToRGB(int red, int green, int blue){
+    private static int convertColorsToRGB(int red, int green, int blue) {
         red = red * 256 * 256;
         green = green * 256;
         return (red + green + blue);
@@ -58,14 +58,14 @@ public class Filter {
         blueSum /= n;
         return convertColorsToRGB(redSum, greenSum, blueSum);
     }
-    private static boolean isInRange(int x, int y, BufferedImage image){
+    private static boolean isInRange(int x, int y, BufferedImage image) {
         return ((x >= 0) && (x < image.getWidth()) && (y >= 0) && (y < image.getHeight()));
     }
     public BufferedImage multipleThreadUse(int procs, int mode) throws InterruptedException {
         int linesForOneThread;
         this.mode = mode;
         int end;
-        if (mode == HORIZONTAL){
+        if (mode == HORIZONTAL) {
             linesForOneThread = input.getHeight() / procs;
             end = input.getHeight();
         }
@@ -74,13 +74,13 @@ public class Filter {
             end = input.getWidth();
         }
         FilterThread[] threads = new FilterThread[procs];
-        for (int i = 0; i < procs - 1; i++){
+        for (int i = 0; i < procs - 1; i++) {
             threads[i] = new FilterThread(input, output, mode, i * linesForOneThread, (i + 1) * linesForOneThread);
             threads[i].start();
         }
         threads[procs - 1] = new FilterThread(input, output, mode, (procs - 1) * linesForOneThread, end);
         threads[procs - 1].start();
-        for (int i = 0; i < procs; i++){
+        for (int i = 0; i < procs; i++) {
             threads[i].join();
         }
         return output;

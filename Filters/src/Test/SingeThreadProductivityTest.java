@@ -26,7 +26,7 @@ public class SingeThreadProductivityTest {
         filter = new Filter(input);
     }
     @Benchmark
-    public void singleThreadTest(){
+    public void singleThreadTest() {
         BufferedImage output = filter.singleThreadUse();
     }
 }
