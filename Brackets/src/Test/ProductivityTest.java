@@ -16,18 +16,18 @@ public class ProductivityTest {
     public int numOfThread;
 
     @Setup
-    public void prepareArray(){
+    public void prepareArray() {
         array = new char[sizeOfArray];
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             array[i] = (char) ('(' + (i % 2));
         }
     }
     @Benchmark
-    public void prodTest(){
+    public void prodTest() {
         boolean result = ParallelPrefixScan.doScan(numOfThread, array);
     }
     @Benchmark
-    public void singleThreadTest(){
+    public void singleThreadTest() {
         boolean result = SingleThreadAlg.MatchBrackets(array);
     }
 

@@ -13,7 +13,7 @@ public class PrefixScanThread extends Thread {
     private final int to;
     private int total;
     private AtomicBoolean isCorrect;
-    public PrefixScanThread(int myID, Message[][] msgPool0, Message[][] msgPool1, int procs, char[] array, int[] result, AtomicBoolean isCorrect){
+    public PrefixScanThread(int myID, Message[][] msgPool0, Message[][] msgPool1, int procs, char[] array, int[] result, AtomicBoolean isCorrect) {
         this.myID = myID;
         this.msgPool0 = msgPool0;
         this.msgPool1 = msgPool1;
@@ -22,7 +22,7 @@ public class PrefixScanThread extends Thread {
         this.result = result;
         this.isCorrect = isCorrect;
         from = (array.length / procs) * myID;
-        if (myID == procs - 1){
+        if (myID == procs - 1) {
             to = array.length;
         }
         else {
@@ -53,19 +53,19 @@ public class PrefixScanThread extends Thread {
         }
     }
 
-    public int waitFromID(int ID, int phase){
+    public int waitFromID(int ID, int phase) {
         Message msg = new Message();
-        if (phase == 0){
+        if (phase == 0) {
             msg = msgPool0[myID][ID];
         }
         else {
             msg = msgPool1[myID][ID];
         }
-        synchronized (msg){
-            while (!msg.isReady()){
+        synchronized (msg) {
+            while (!msg.isReady()) {
                 try {
                     msg.wait();
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
@@ -76,12 +76,12 @@ public class PrefixScanThread extends Thread {
     @Override
     public void run() {
         total = 0;
-        for (int i = from; i < to; i++){
+        for (int i = from; i < to; i++) {
             total += bracketToNumber(array[i]);
         }
         int k;
-        for (k = 1; k < procs; k *= 2){
-            if ((myID & k) == 0){
+        for (k = 1; k < procs; k *= 2) {
+            if ((myID & k) == 0) {
                 sendToID(myID + k, total, 0);
                 break;
             }
@@ -92,7 +92,7 @@ public class PrefixScanThread extends Thread {
         if (myID == procs - 1) {
             total = 0;
         }
-        if (k >= procs){
+        if (k >= procs) {
             k /= 2;
         }
         while (k > 0) {

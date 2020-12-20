@@ -1,9 +1,9 @@
 package Main;
 
 public class SingleThreadAlg {
-    public static boolean MatchBrackets(char[] array){
+    public static boolean MatchBrackets(char[] array) {
         int x = 0;
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             if (array[i] == '(') {
                 x++;
             }

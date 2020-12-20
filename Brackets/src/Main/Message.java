@@ -4,19 +4,19 @@ public class Message {
     private int msg;
     private boolean readiness;
 
-    public Message(){
+    public Message() {
         readiness = false;
     }
-    public void setMsg(int msg){
+    public void setMsg(int msg) {
         this.msg = msg;
     }
-    public int getMsg(){
+    public int getMsg() {
         return msg;
     }
-    public void setReady(){
+    public void setReady() {
         this.readiness = true;
     }
-    public boolean isReady(){
+    public boolean isReady() {
         return readiness;
     }
 }
