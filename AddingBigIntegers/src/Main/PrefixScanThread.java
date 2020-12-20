@@ -13,7 +13,7 @@ public class PrefixScanThread extends Thread {
     private final int from;
     private final int to;
     private Carry total;
-    public PrefixScanThread(int myID, Message[][] msgPool0, Message[][] msgPool1, int procs, Carry[] array, int[] firstN, int[] secondN, int[] result){
+    public PrefixScanThread(int myID, Message[][] msgPool0, Message[][] msgPool1, int procs, Carry[] array, int[] firstN, int[] secondN, int[] result) {
         this.myID = myID;
         this.msgPool0 = msgPool0;
         this.msgPool1 = msgPool1;
@@ -24,7 +24,7 @@ public class PrefixScanThread extends Thread {
         this.halfResult = halfResult;
         this.result = result;
         from = (array.length / procs) * myID;
-        if (myID == procs - 1){
+        if (myID == procs - 1) {
             to = array.length;
         }
         else {
@@ -46,19 +46,19 @@ public class PrefixScanThread extends Thread {
         }
     }
 
-    public Carry waitFromID(int ID, int phase){
+    public Carry waitFromID(int ID, int phase) {
         Message msg = new Message();
-        if (phase == 0){
+        if (phase == 0) {
             msg = msgPool0[myID][ID];
         }
         else {
             msg = msgPool1[myID][ID];
         }
-        synchronized (msg){
-            while (!msg.isReady()){
+        synchronized (msg) {
+            while (!msg.isReady()) {
                 try {
                     msg.wait();
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
@@ -69,12 +69,12 @@ public class PrefixScanThread extends Thread {
     @Override
     public void run() {
         total = CarryOp.getIdentityElement();
-        for (int i = from; i < to; i++){
+        for (int i = from; i < to; i++) {
             int y;
-            if (i >= firstN.length){
+            if (i >= firstN.length) {
                 y = secondN[i];
             }
-            else if (i >= secondN.length){
+            else if (i >= secondN.length) {
                 y = firstN[i];
             }
             else {
@@ -93,8 +93,8 @@ public class PrefixScanThread extends Thread {
             total = composition;
         }
         int k;
-        for (k = 1; k < procs; k *= 2){
-            if ((myID & k) == 0){
+        for (k = 1; k < procs; k *= 2) {
+            if ((myID & k) == 0) {
                 sendToID(myID + k, total, 0);
                 break;
             }
@@ -106,7 +106,7 @@ public class PrefixScanThread extends Thread {
         if (myID == procs - 1) {
             total = CarryOp.getIdentityElement();
         }
-        if (k >= procs){
+        if (k >= procs) {
             k /= 2;
         }
         while (k > 0) {
@@ -125,20 +125,20 @@ public class PrefixScanThread extends Thread {
             total = CarryOp.composition(total, array[i]);
             array[i] = total;
             int y;
-            if (array[i] == Carry.C){
+            if (array[i] == Carry.C) {
                 y = 1;
             }
             else {
                 y = 0;
             }
-            if (i == array.length - 1){
+            if (i == array.length - 1) {
                 result[i + 1] = y;
             }
             else {
                 result[i + 1] = (firstN[i + 1] + secondN[i + 1] + y) % 10;
             }
         }
-        if (myID == 0){
+        if (myID == 0) {
             result[0] = (firstN[0] + secondN[0]) % 10;
         }
     }

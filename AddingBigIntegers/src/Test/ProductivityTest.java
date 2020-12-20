@@ -17,18 +17,18 @@ public class ProductivityTest {
     public int numOfThread;
 
     @Setup
-    public void prepareArray(){
-        for (int i = 0; i < firstN.length; i++){
+    public void prepareArray() {
+        for (int i = 0; i < firstN.length; i++) {
             firstN[i] = i % 9 + 1;
             secondN[i] = i % 8 + 1;
         }
     }
     @Benchmark
-    public void prodTest(){
+    public void prodTest() {
         ParallelPrefixScan.doScan(numOfThread, firstN, secondN);
     }
     @Benchmark
-    public void singleThreadTest(){
+    public void singleThreadTest() {
         SingleThreadAlg.SumInt(firstN, secondN);
     }
 
