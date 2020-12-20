@@ -6,14 +6,12 @@ import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
-@State(Scope.Thread)
+@State(Scope.Benchmark)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Fork(value = 1)
-public class ProductivityTest {
+public class SingleThreadTest {
     private TurtleStep[] array;
     private final int sizeOfArray = 1000000;
-    @Param({"1", "2", "4"})
-    public int numOfThread;
 
     @Setup
     public void prepareArray() {
@@ -24,6 +22,6 @@ public class ProductivityTest {
     }
     @Benchmark
     public void prodTest() {
-        MyComplex result = TurtleStep.calculateFinalPoint(array, numOfThread);
+        MyComplex result = TurtleStep.calculateFinalPoint(array);
     }
 }
