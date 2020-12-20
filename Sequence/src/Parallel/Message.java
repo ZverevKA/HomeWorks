@@ -4,19 +4,19 @@ public class Message {
     private Compositionable msg;
     private boolean readiness;
 
-    public Message(){
+    public Message() {
         readiness = false;
     }
-    public void setMsg(Compositionable msg){
+    public void setMsg(Compositionable msg) {
         this.msg = msg;
     }
-    public Compositionable getMsg(){
+    public Compositionable getMsg() {
         return msg;
     }
-    public void setReady(){
+    public void setReady() {
         this.readiness = true;
     }
-    public boolean isReady(){
+    public boolean isReady() {
         return readiness;
     }
 }

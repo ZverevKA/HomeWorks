@@ -6,11 +6,11 @@ public class Pair implements Compositionable<Pair> {
 
     public long a;
     public long b;
-    public Pair(){
+    public Pair() {
         this.a = 0;
         this.b = 0;
     }
-    public Pair(long a, long b){
+    public Pair(long a, long b) {
         this.a = a;
         this.b = b;
     }

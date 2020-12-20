@@ -17,18 +17,18 @@ public class ProductivityTest {
     public int numOfThread;
 
     @Setup
-    public void prepareArray(){
+    public void prepareArray() {
         array = new Pair[sizeOfArray];
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             array[i] = new Pair(i % 5, i % 17);
         }
     }
     @Benchmark
-    public void prodTest(){
+    public void prodTest() {
         Pair result = (Pair) ParallelScan.doScan(array, numOfThread);
     }
     @Benchmark
-    public void singleThreadTest(){
+    public void singleThreadTest() {
         long result = SingleThreadAlg.doAlg(array);
     }
 
