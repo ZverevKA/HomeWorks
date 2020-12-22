@@ -13,7 +13,7 @@ public class SingleThreadAlg {
                 y = firstN[i] + c;
             }
             else{
-                y = firstN[i] + secondN[i];
+                y = firstN[i] + secondN[i] + c;
             }
             if (y > 9) {
                 result[i] = y - 10;
